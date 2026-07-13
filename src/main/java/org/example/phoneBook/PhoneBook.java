@@ -19,4 +19,12 @@ public class PhoneBook {
 
         return contacts.size();
     }
+
+    public String findByNumber(String phoneNumber){
+        if (phoneNumber == null || phoneNumber.isBlank()) {
+            return "Номер телефона не найден";
+        }
+        return null;
+    }
+
 }

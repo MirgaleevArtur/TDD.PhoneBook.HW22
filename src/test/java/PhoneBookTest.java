@@ -42,4 +42,17 @@ public class PhoneBookTest {
         assertEquals("Номер телефона не может быть пустым",
                 assertThrows(IllegalArgumentException.class, () -> phoneBook.add("Michail", "")).getMessage());
     }
+
+    @Test
+    public void testFindByNumber() {
+        phoneBook.add("Oleg", "+71284719824");
+        assertEquals("Oleg", phoneBook.findByNumber("+71284719824"));
+    }
+
+    @Test
+    public void testFindByNumberNotFound() {
+        phoneBook.add("Oleg", "+71284719824");
+        assertEquals("Номер телефона не найден", phoneBook.findByNumber(""));
+    }
+
 }
