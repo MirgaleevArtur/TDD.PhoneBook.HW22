@@ -1,12 +1,16 @@
 package org.example;
 
+import org.example.phoneBook.PhoneBook;
+
 public class Main {
     public static void main(String[] args) {
+        PhoneBook phoneBook = new PhoneBook();
 
-        System.out.printf("Hello and welcome!");
+        phoneBook.add("Oleg", "+79191586848");
+        phoneBook.add("Olga", "+79291556848");
+        phoneBook.add("Igor", "+79292556888");
+        phoneBook.add("Vladimir", "+79292599999");
 
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("i = " + i);
-        }
+        System.out.println(phoneBook.printAllNames());
     }
 }

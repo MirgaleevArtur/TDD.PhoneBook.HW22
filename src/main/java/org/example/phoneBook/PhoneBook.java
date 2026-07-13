@@ -1,11 +1,10 @@
 package org.example.phoneBook;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class PhoneBook {
 
-    private final Map<String, String> contacts = new HashMap<>();
+    private final Map<String, String> contacts = new TreeMap<>();
     private final Map<String, String> reverseContacts = new HashMap<>();
 
     public int add(String name, String phoneNumber) {
@@ -33,7 +32,13 @@ public class PhoneBook {
         if (name == null || name.isBlank()) {
             return "Имя контакта не найдено";
         }
-        return null;
+        return contacts.get(name);
     }
 
+    public String printAllNames() {
+        if (contacts.isEmpty()) {
+            return "Список контактов пуст";
+        }
+        return null;
+    }
 }

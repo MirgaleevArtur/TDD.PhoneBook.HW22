@@ -27,25 +27,25 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testNameIsEmpty() {
+    public void testAddContactNameIsEmpty() {
         assertEquals("Имя контакта не может быть пустым",
                     assertThrows(IllegalArgumentException.class, () -> phoneBook.add("", "+124190284")).getMessage());
     }
 
     @Test
-    public void testNumberIsEmpty() {
+    public void testAddContactNumberIsEmpty() {
         assertEquals("Номер телефона не может быть пустым",
                 assertThrows(IllegalArgumentException.class, () -> phoneBook.add("Michail", "")).getMessage());
     }
 
     @Test
-    public void testFindByNumber() {
+    public void testFindContactByNumber() {
         phoneBook.add("Oleg", "+71284719824");
         assertEquals("Oleg", phoneBook.findByNumber("+71284719824"));
     }
 
     @Test
-    public void testFindByNumberNotFound() {
+    public void testFindByContactByNumberNumberNotFound() {
         phoneBook.add("Oleg", "+71284719824");
         assertEquals("Номер телефона не найден", phoneBook.findByNumber(""));
     }
@@ -57,9 +57,20 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testFindByNameNotFound() {
+    public void testFindByNameNameNotFound() {
         phoneBook.add("Oleg", "+71284719824");
         assertEquals("Имя контакта не найдено", phoneBook.findByName(""));
     }
 
+    @Test
+    public void testPrintAllContacts() {
+        phoneBook.add("Oleg", "+71284719824");
+        phoneBook.add("Olga", "+7128234419824");
+        assertEquals("Oleg, Olga", phoneBook.printAllNames());
+    }
+
+    @Test
+    public void testPrintAllContactsContactsEmpty() {
+        assertEquals("Список контактов пуст", phoneBook.printAllNames());
+    }
 }
