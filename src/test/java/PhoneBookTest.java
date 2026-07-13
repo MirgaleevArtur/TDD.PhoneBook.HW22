@@ -15,12 +15,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testAddFirstContact() {
-        assertEquals(1, phoneBook.add("Oleg", "+79191452949"));
-    }
-
-    @Test
-    public void testAddTwoContacts() {
+    public void testAddContacts() {
         assertEquals(1, phoneBook.add("Marina", "+781284814"));
         assertEquals(2, phoneBook.add("Olga", "+781284812314"));
     }
@@ -53,6 +48,18 @@ public class PhoneBookTest {
     public void testFindByNumberNotFound() {
         phoneBook.add("Oleg", "+71284719824");
         assertEquals("Номер телефона не найден", phoneBook.findByNumber(""));
+    }
+
+    @Test
+    public void testFindByName() {
+        phoneBook.add("Oleg", "+71284719824");
+        assertEquals("+71284719824", phoneBook.findByName("Oleg"));
+    }
+
+    @Test
+    public void testFindByNameNotFound() {
+        phoneBook.add("Oleg", "+71284719824");
+        assertEquals("Имя контакта не найдено", phoneBook.findByName(""));
     }
 
 }
