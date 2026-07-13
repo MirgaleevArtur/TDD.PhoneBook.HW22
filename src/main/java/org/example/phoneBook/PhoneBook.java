@@ -8,7 +8,6 @@ public class PhoneBook {
     private final Map<String, String> contacts = new HashMap<>();
 
     public int add(String name, String phoneNumber) {
-
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Имя контакта не может быть пустым");
         }
@@ -17,6 +16,7 @@ public class PhoneBook {
         }
 
         contacts.put(name, phoneNumber);
-        return 0;
+
+        return contacts.size();
     }
 }
