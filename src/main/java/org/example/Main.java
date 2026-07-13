@@ -12,5 +12,9 @@ public class Main {
         phoneBook.add("Vladimir", "+79292599999");
 
         System.out.println(phoneBook.printAllNames());
+        System.out.println(phoneBook.findByName("Oleg"));
+        System.out.println(phoneBook.findByNumber("+79291556848"));
+        System.out.println(phoneBook.findByName("Vasilyi"));
+        System.out.println(phoneBook.findByNumber("123"));
     }
 }

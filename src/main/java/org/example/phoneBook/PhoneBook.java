@@ -15,30 +15,33 @@ public class PhoneBook {
             throw new IllegalArgumentException("Номер телефона не может быть пустым");
         }
 
-        contacts.put(name, phoneNumber);
-        reverseContacts.put(phoneNumber, name);
+        String oldNumber = contacts.put(name.trim(), phoneNumber.trim());
+        if (oldNumber != null) {
+            reverseContacts.remove(oldNumber);
+        }
+        reverseContacts.put(phoneNumber.trim(), name.trim());
 
         return contacts.size();
     }
 
-    public String findByNumber(String phoneNumber){
+    public String findByNumber(String phoneNumber) {
         if (phoneNumber == null || phoneNumber.isBlank()) {
-            return "Номер телефона не найден";
+            return "Номер телефона не может быть пустым";
         }
-        return reverseContacts.get(phoneNumber);
+        return reverseContacts.getOrDefault(phoneNumber, "Номер телефона не найден");
     }
 
-    public String findByName(String name){
+    public String findByName(String name) {
         if (name == null || name.isBlank()) {
-            return "Имя контакта не найдено";
+            return "Имя контакта не может быть пустым";
         }
-        return contacts.get(name);
+        return contacts.getOrDefault(name, "Имя контакта не найдено");
     }
 
     public String printAllNames() {
         if (contacts.isEmpty()) {
             return "Список контактов пуст";
         }
-        return null;
+        return String.join(", ", contacts.keySet());
     }
 }
